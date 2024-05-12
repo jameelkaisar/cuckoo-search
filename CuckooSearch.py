@@ -5,13 +5,14 @@ from math import gamma
 
 class CuckooSearch():
 
-    def __init__(self, fitness, population=100, dimentions=2, beta=1.5, pa=0.25, iterations=200):
+    def __init__(self, fitness, population=100, dimentions=2, beta=1.5, pa=0.25, iterations=200, verbose=True):
         self.fitness = fitness
         self.population = population
         self.dimentions = dimentions
         self.beta = beta
         self.pa = pa
         self.iterations = iterations
+        self.verbose = verbose
 
 
     def generate_nests(self):
@@ -77,6 +78,7 @@ class CuckooSearch():
             best_nest = self.get_best_nest(*nests)
             nest_fitness = self.get_fitness(best_nest)
             solutions.append((i, best_nest))
-            print(f"Iteration: {i}, Best Nest: {best_nest}, Nest Fitness: {nest_fitness}")
+            if self.verbose:
+                print(f"Iteration: {i}, Best Nest: {best_nest}, Nest Fitness: {nest_fitness}")
 
         return solutions
