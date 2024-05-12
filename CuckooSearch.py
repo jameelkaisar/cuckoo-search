@@ -1,11 +1,12 @@
 import numpy as np
 from math import gamma
+import matplotlib.pyplot as plt
 
 
 
 class CuckooSearch():
 
-    def __init__(self, fitness, population=100, dimentions=2, beta=1.5, pa=0.25, iterations=200, verbose=True):
+    def __init__(self, fitness, population=100, dimentions=2, beta=1.5, pa=0.25, iterations=200, verbose=True, plot_graph=False):
         self.fitness = fitness
         self.population = population
         self.dimentions = dimentions
@@ -13,6 +14,7 @@ class CuckooSearch():
         self.pa = pa
         self.iterations = iterations
         self.verbose = verbose
+        self.plot_graph = plot_graph
 
 
     def generate_nests(self):
@@ -72,6 +74,9 @@ class CuckooSearch():
         nests = self.generate_nests()
         solutions = []
 
+        if self.plot_graph:
+            fitness_values = []
+
         for i in range(self.iterations):
             random_step = self.levy_flight()
             nests = self.do_iter(nests, random_step)
@@ -80,5 +85,14 @@ class CuckooSearch():
             solutions.append((i, best_nest))
             if self.verbose:
                 print(f"Iteration: {i}, Best Nest: {best_nest}, Nest Fitness: {nest_fitness}")
+            if self.plot_graph:
+                fitness_values.append(nest_fitness)
+
+        if self.plot_graph:
+            plt.plot(range(self.iterations), fitness_values)
+            plt.xlabel('Iteration')
+            plt.ylabel('Fitness')
+            plt.title('Fitness Progression')
+            plt.show()
 
         return solutions
