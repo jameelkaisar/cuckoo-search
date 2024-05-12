@@ -5,6 +5,20 @@ import matplotlib.pyplot as plt
 
 
 class CuckooSearch():
+    """
+    Cuckoo Search Algorithm
+
+    Parameters:
+    - fitness (function): The fitness function to evaluate the quality of a solution.
+    - population (int): The number of nests (solutions) in the population. Default is 100.
+    - dimensions (int): The number of dimensions in the search space. Default is 2.
+    - beta (float): The power-law distribution parameter for Levy flight. Default is 1.5.
+    - pa (float): The probability of a cuckoo's egg being discovered and replaced by a new one. Default is 0.25.
+    - iterations (int): The number of iterations to run the algorithm. Default is 200.
+    - verbose (bool): Whether to print the progress of each iteration. Default is True.
+    - plot_graph (bool): Whether to plot the fitness progression graph. Default is False.
+    """
+
 
     def __init__(self, fitness, population=100, dimentions=2, beta=1.5, pa=0.25, iterations=200, verbose=True, plot_graph=False):
         self.fitness = fitness
