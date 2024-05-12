@@ -10,7 +10,7 @@ class CuckooSearch():
         self.population = population
         self.dimentions = dimentions
         self.beta = beta
-        self.pa = 0.25
+        self.pa = pa
         self.iterations = iterations
 
 
