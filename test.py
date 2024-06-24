@@ -23,7 +23,7 @@ nest_fitness = fitness_1(*best_solution)
 print(f"Best Solution: {best_solution}, Fitness: {nest_fitness}")
 
 
-fitness_2 = lambda x, y: 2 * x**2 + 3 * y**2 + 4 * x * y + 5 * x + 6 * y + 7 # Is ~3.6 a Local Minima?
+fitness_2 = lambda x, y: 2 * x**2 + 3 * y**2 + 4 * x * y + 5 * x + 6 * y + 7 # Is ~3.6 a Local Minima? See https://www.desmos.com/calculator/gw4s4gre5q
 
 cs = CuckooSearch(fitness_2, iterations=15, plot_graph=True)
 solutions = cs.run()
